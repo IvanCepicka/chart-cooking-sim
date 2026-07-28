@@ -108,13 +108,17 @@ export const useGlobal = defineStore('global', {
         if (order.remaining < 0) continue
         if (order.remaining === 1) {
           this.money += order.sell
+
+          for (let i = 0; i < order.duration; i++) {
+            this.xpRemaining--
+            if (this.checkXp()) {
+              break
+            }
+          }
+
           this.orders[i] = await this.generateRecipe()
-          this.xpRemaining--
-          this.checkXp()
         } else {
           order.remaining--
-          this.xpRemaining--
-          this.checkXp()
         }
       }
 
@@ -135,7 +139,9 @@ export const useGlobal = defineStore('global', {
       if (this.xpRemaining <= 0) {
         this.level++
         this.xpRemaining = xpToNextLevel(this.level)
+        return true
       }
+      return false
     },
 
     async acceptOrder(i: number) {
