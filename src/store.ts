@@ -29,7 +29,7 @@ const defaultState: GlobalState = {
   autoAccept: false,
 }
 
-export const maxLevel = 4
+export const maxLevel = 6
 
 function xpToNextLevel(lvl: number) {
   switch (lvl) {
@@ -39,6 +39,10 @@ function xpToNextLevel(lvl: number) {
       return 800
     case 3:
       return 4000
+    case 4:
+      return 6000
+    case 5:
+      return 7500
     default:
       return Infinity
   }

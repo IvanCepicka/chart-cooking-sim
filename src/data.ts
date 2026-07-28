@@ -11,6 +11,10 @@ import salmonIcon from './assets/icons/salmon.svg'
 import blackPepperIcon from './assets/icons/blackpepper.svg'
 import onionIcon from './assets/icons/onion.svg'
 import vegetableBrothIcon from './assets/icons/vegetablebroth.svg'
+import chickenIcon from './assets/icons/chicken.svg'
+import chickenBrothIcon from './assets/icons/chickenbroth.svg'
+import tomatoIcon from './assets/icons/tomato.svg'
+import lettuceIcon from './assets/icons/lettuce.svg'
 
 export const ingredients: Ingredient[] = [
   {
@@ -76,6 +80,38 @@ export const ingredients: Ingredient[] = [
     cost: 0.004,
     icon: vegetableBrothIcon,
     unlocks: 4,
+  },
+  {
+    type: 'solid',
+    id: 'chicken',
+    name: 'Chicken',
+    cost: 5.5,
+    icon: chickenIcon,
+    unlocks: 5,
+  },
+  {
+    type: 'liquid',
+    id: 'chickenbroth',
+    name: 'Chicken Broth',
+    cost: 0.006,
+    icon: chickenBrothIcon,
+    unlocks: 5,
+  },
+  {
+    type: 'solid',
+    id: 'tomato',
+    name: 'Tomato',
+    cost: 1.2,
+    icon: tomatoIcon,
+    unlocks: 6,
+  },
+  {
+    type: 'solid',
+    id: 'lettuce',
+    name: 'Lettuce',
+    cost: 2,
+    icon: lettuceIcon,
+    unlocks: 6,
   },
 ]
 
