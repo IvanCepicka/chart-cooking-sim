@@ -38,11 +38,11 @@ function xpToNextLevel(lvl: number) {
     case 2:
       return 800
     case 3:
-      return 4000
+      return 1700
     case 4:
-      return 6000
+      return 2000
     case 5:
-      return 7500
+      return 2000
     default:
       return Infinity
   }
