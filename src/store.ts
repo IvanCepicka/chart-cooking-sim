@@ -97,6 +97,7 @@ export const useGlobal = defineStore('global', {
     },
 
     async tick() {
+      this.updateNextLevel()
       for (let i = 0; i < 3; i++) {
         const order = this.orders[i]
         if (order.remaining < 0) continue
@@ -116,6 +117,12 @@ export const useGlobal = defineStore('global', {
         for (let i = 0; i < this.orders.length; i++) {
           await this.acceptOrder(i)
         }
+      }
+    },
+
+    updateNextLevel() {
+      if (!isFinite(this.xpRemaining) && this.level < maxLevel) {
+        this.xpRemaining = xpToNextLevel(this.level)
       }
     },
 
