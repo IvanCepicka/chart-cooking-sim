@@ -325,6 +325,98 @@ export const exampleRecipes: ExampleRecipe[] = [
       },
     ],
   },
+  {
+    id: 'af197601-7166-411f-a5d8-39e353293a92',
+    name: 'Potato Soup',
+    unlocks: 4,
+    nodes: [
+      {
+        id: 'ebfedd11-4b70-423c-82fd-4647ca3ae06d',
+        type: 'serve',
+        position: { x: -76.52604861502468, y: -179.8117021917638 },
+        data: {},
+      },
+      {
+        id: '83b03f4f-e476-499e-9e02-ca613ff10f03',
+        type: 'raw',
+        position: { x: -111.3826185872242, y: -1205.3974890410004 },
+        data: { id: 'potato', count: 2 },
+      },
+      {
+        id: 'a03bd064-20e5-4012-a89b-37550286c57f',
+        type: 'cut',
+        position: { x: -32.13761902953382, y: -947.3483078761088 },
+        data: { pieces: 15 },
+      },
+      {
+        id: 'ab7c5e57-0467-4bc5-833b-af4ee9ca46d9',
+        type: 'raw',
+        position: { x: -558.5099555294332, y: -1211.9262984504858 },
+        data: { id: 'onion', count: 1 },
+      },
+      {
+        id: 'd815854b-1de0-48d7-aada-aa0aece46459',
+        type: 'cut',
+        position: { x: -490.74784047043045, y: -963.2580920435809 },
+        data: { pieces: 15 },
+      },
+      {
+        id: 'c5a2f6ec-fe1d-415c-ac55-eb8d6a001abb',
+        type: 'trash',
+        position: { x: -414.3384624572307, y: -736.5201575452993 },
+        data: { amount: 75 },
+      },
+      {
+        id: '259a9a07-05b3-4630-9272-27bb0cd98ab3',
+        type: 'boil',
+        position: { x: -162.31029237811174, y: -456.28144101984213 },
+        data: { duration: 90 },
+      },
+      {
+        id: '21728410-dc3a-44c6-9e64-68ecc3452f58',
+        type: 'raw',
+        position: { x: 356.27178414875334, y: -822.5296566943961 },
+        data: { id: 'vegetablebroth', count: 1000 },
+      },
+    ],
+    edges: [
+      {
+        id: '5d2c228a-62c2-42bd-a76c-4daa24ab2ba8',
+        source: '83b03f4f-e476-499e-9e02-ca613ff10f03',
+        target: 'a03bd064-20e5-4012-a89b-37550286c57f',
+      },
+      {
+        id: '160f0a32-81d3-41cb-a770-8807ad1fd2c6',
+        source: 'ab7c5e57-0467-4bc5-833b-af4ee9ca46d9',
+        target: 'd815854b-1de0-48d7-aada-aa0aece46459',
+      },
+      {
+        id: 'c4187a93-b2fe-4883-bebb-8288de379e78',
+        source: 'd815854b-1de0-48d7-aada-aa0aece46459',
+        target: 'c5a2f6ec-fe1d-415c-ac55-eb8d6a001abb',
+      },
+      {
+        id: '308d402a-0681-4d7e-8cc8-1810fcd11175',
+        source: 'a03bd064-20e5-4012-a89b-37550286c57f',
+        target: '259a9a07-05b3-4630-9272-27bb0cd98ab3',
+      },
+      {
+        id: '704d35a2-6e84-42e1-9906-a843a27618bc',
+        source: 'c5a2f6ec-fe1d-415c-ac55-eb8d6a001abb',
+        target: '259a9a07-05b3-4630-9272-27bb0cd98ab3',
+      },
+      {
+        id: '2b5908a7-6ebc-4437-8cd9-7d3fe0b104c3',
+        source: '21728410-dc3a-44c6-9e64-68ecc3452f58',
+        target: '259a9a07-05b3-4630-9272-27bb0cd98ab3',
+      },
+      {
+        id: 'ae9b2906-d04a-4d5f-abf8-661c62c0fee2',
+        source: '259a9a07-05b3-4630-9272-27bb0cd98ab3',
+        target: 'ebfedd11-4b70-423c-82fd-4647ca3ae06d',
+      },
+    ],
+  },
 ]
 
 exampleRecipes.sort((a, b) => a.name.localeCompare(b.name))

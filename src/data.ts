@@ -9,6 +9,8 @@ import lemonIcon from './assets/icons/lemon.svg'
 import troutIcon from './assets/icons/trout.svg'
 import salmonIcon from './assets/icons/salmon.svg'
 import blackPepperIcon from './assets/icons/blackpepper.svg'
+import onionIcon from './assets/icons/onion.svg'
+import vegetableBrothIcon from './assets/icons/vegetablebroth.svg'
 
 export const ingredients: Ingredient[] = [
   {
@@ -58,6 +60,22 @@ export const ingredients: Ingredient[] = [
     cost: 12,
     icon: salmonIcon,
     unlocks: 3,
+  },
+  {
+    type: 'solid',
+    id: 'onion',
+    name: 'Onion',
+    cost: 1,
+    icon: onionIcon,
+    unlocks: 4,
+  },
+  {
+    type: 'liquid',
+    id: 'vegetablebroth',
+    name: 'Vegetable Broth',
+    cost: 0.004,
+    icon: vegetableBrothIcon,
+    unlocks: 4,
   },
 ]
 
