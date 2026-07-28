@@ -3,7 +3,6 @@ import { createPinia } from 'pinia'
 import { useGlobal } from './store.ts'
 import App from './App.vue'
 import './style.css'
-import { db } from './db.ts'
 
 const app = createApp(App)
 
@@ -20,22 +19,14 @@ window.addEventListener('beforeunload', () => global.save())
 
 setInterval(() => global.tick(), 1000)
 
-let kPresses = 0
-window.addEventListener('keydown', async (e) => {
-  if (e.key === 'k' && e.altKey && !e.repeat) {
-    kPresses++
-    if (kPresses >= 7) {
+if (import.meta.env.DEV) {
+  window.addEventListener('keydown', async (e) => {
+    if (e.key === 'k' && e.altKey && !e.repeat) {
       global.$reset()
       await global.init()
-      await db.recipes.clear()
       localStorage.removeItem('lastRecipeId')
-      kPresses = 0
     }
-  }
-})
-
-setInterval(() => {
-  if (kPresses > 0) kPresses--
-}, 500)
+  })
+}
 
 app.mount('#app')

@@ -26,7 +26,7 @@ onMounted(async () => {
   await refreshRecipes()
 
   function log(e: KeyboardEvent) {
-    if (e.key === 'e') {
+    if (import.meta.env.DEV && e.key === 'e' && !e.repeat) {
       console.log(JSON.stringify(serializeRecipe(recipe.value)))
     }
   }

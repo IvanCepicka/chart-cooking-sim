@@ -29,6 +29,24 @@ const defaultState: GlobalState = {
   autoAccept: false,
 }
 
+export const maxLevel = 3
+
+function xpToNextLevel(lvl: number) {
+  switch (lvl) {
+    case 1:
+      return 200
+    case 2:
+      return 800
+    default:
+      return Infinity
+  }
+}
+
+if (import.meta.env.DEV) {
+  defaultState.money = 999999999
+  defaultState.level = maxLevel
+}
+
 const STATS_KEY = 'stats'
 const MENU_KEY = 'menu'
 
@@ -141,15 +159,4 @@ export const useGlobal = defineStore('global', {
 
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useGlobal, import.meta.hot))
-}
-
-function xpToNextLevel(lvl: number) {
-  switch (lvl) {
-    case 1:
-      return 200
-    case 2:
-      return 800
-    default:
-      return Infinity
-  }
 }
