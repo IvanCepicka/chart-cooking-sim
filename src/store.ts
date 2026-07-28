@@ -29,7 +29,7 @@ const defaultState: GlobalState = {
   autoAccept: false,
 }
 
-export const maxLevel = 4
+export const maxLevel = 6
 
 function xpToNextLevel(lvl: number) {
   switch (lvl) {
@@ -39,6 +39,10 @@ function xpToNextLevel(lvl: number) {
       return 800
     case 3:
       return 4000
+    case 4:
+      return 6000
+    case 5:
+      return 7500
     default:
       return Infinity
   }
@@ -47,6 +51,7 @@ function xpToNextLevel(lvl: number) {
 if (import.meta.env.DEV) {
   defaultState.money = 999999999
   defaultState.level = maxLevel
+  defaultState.xpRemaining = xpToNextLevel(maxLevel)
 }
 
 const STATS_KEY = 'stats'
