@@ -376,7 +376,7 @@ export const exampleRecipes: ExampleRecipe[] = [
         id: '21728410-dc3a-44c6-9e64-68ecc3452f58',
         type: 'raw',
         position: { x: 356.27178414875334, y: -822.5296566943961 },
-        data: { id: 'vegetablebroth', count: 1000 },
+        data: { id: 'vegetablebroth', count: 500 },
       },
     ],
     edges: [
