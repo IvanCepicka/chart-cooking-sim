@@ -239,26 +239,32 @@ export const exampleRecipes: ExampleRecipe[] = [
       {
         id: 'ff9bc018-5c2b-4e08-9ba4-d3388dfa8614',
         type: 'raw',
-        position: { x: -376.2015520254701, y: -421.52234015974364 },
+        position: { x: -434.7460968325156, y: -663.0185874888064 },
         data: { id: 'potato', count: 2 },
       },
       {
         id: '8ef7b5f5-d226-4b54-9bab-38717beea1ef',
         type: 'raw',
-        position: { x: -824.834938032813, y: -328.32619420792685 },
+        position: { x: -840.3320234229133, y: -584.8890523329203 },
         data: { id: 'water', count: 500 },
       },
       {
         id: '8b0f4356-2b05-477a-8200-2758d550ac88',
         type: 'boil',
-        position: { x: -477.1351589195107, y: 308.91598612682645 },
+        position: { x: -477.1351589195107, y: 40.29983936508842 },
         data: { duration: 60 },
       },
       {
         id: '3726b861-4d43-49c5-b880-dff6e4a31d60',
         type: 'spice',
-        position: { x: -562.025143199623, y: -39.22460421863832 },
+        position: { x: -586.1317204731124, y: -314.7283444870876 },
         data: { id: 'salt', amount: 2 },
+      },
+      {
+        id: 'c5063923-db81-4e46-b190-3147b68b3b08',
+        type: 'strain',
+        position: { x: -555.1766732021429, y: 360.4066886024987 },
+        data: {},
       },
     ],
     edges: [
@@ -308,8 +314,13 @@ export const exampleRecipes: ExampleRecipe[] = [
         target: '8b0f4356-2b05-477a-8200-2758d550ac88',
       },
       {
-        id: 'cb231007-1021-4122-907c-6c76ff58ad74',
+        id: '42e43e74-627f-48fc-9a4b-a4e9e5bc6a4f',
         source: '8b0f4356-2b05-477a-8200-2758d550ac88',
+        target: 'c5063923-db81-4e46-b190-3147b68b3b08',
+      },
+      {
+        id: 'b9ae1595-d773-4f95-9542-c8211c1d0b14',
+        source: 'c5063923-db81-4e46-b190-3147b68b3b08',
         target: 'd257e610-6db9-446a-8c37-65322f94b940',
       },
     ],
