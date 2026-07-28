@@ -146,9 +146,9 @@ if (import.meta.hot) {
 function xpToNextLevel(lvl: number) {
   switch (lvl) {
     case 1:
-      return 1
+      return 200
     case 2:
-      return 1
+      return 800
     default:
       return Infinity
   }
