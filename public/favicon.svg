@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200"
+   height="200"
+   viewBox="0 0 52.916665 52.916666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="knife.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="3.0324635"
+     inkscape:cx="69.085744"
+     inkscape:cy="78.319161"
+     inkscape:window-width="1920"
+     inkscape:window-height="1111"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="false" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Vrstva 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#eac670;fill-opacity:1;stroke:#aa6d30;stroke-width:2.11667;stroke-dasharray:none;stroke-opacity:1"
+       d="m 38.971861,23.350944 -4.216857,-5.141963 8.812756,-7.877159 4.399121,5.486974 z"
+       id="path3" />
+    <path
+       style="fill:#c8c8c8;fill-opacity:1;stroke:#8b8b8b;stroke-width:2.11667;stroke-dasharray:none;stroke-opacity:1"
+       d="m 6.5672382,38.993672 c 3.6e-4,0.0029 3.7358148,4.664834 10.7383828,1.489428 10.655223,-4.831749 23.075855,-15.701125 22.855026,-15.714115 l -6.687978,-8.208117 z"
+       id="path2"
+       sodipodi:nodetypes="csccc"
+       inkscape:transform-center-x="1.41741"
+       inkscape:transform-center-y="-3.9957938" />
+  </g>
+</svg>
