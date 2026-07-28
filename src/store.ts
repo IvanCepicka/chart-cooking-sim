@@ -51,6 +51,7 @@ function xpToNextLevel(lvl: number) {
 if (import.meta.env.DEV) {
   defaultState.money = 999999999
   defaultState.level = maxLevel
+  defaultState.xpRemaining = xpToNextLevel(maxLevel)
 }
 
 const STATS_KEY = 'stats'
