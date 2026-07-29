@@ -5,13 +5,7 @@ export interface Spice {
   name: string
   cost: number
   icon?: string
-  unlocks: number
-}
-
-export interface SolidIngredientCut {
-  id: string
-  name: string
-  count: number
+  unlocks: number | 'store'
 }
 
 export interface Ingredient {
@@ -20,7 +14,7 @@ export interface Ingredient {
   name: string
   cost: number
   icon?: string
-  unlocks: number
+  unlocks: number | 'store'
 }
 
 export interface RecipeCalculated {
@@ -35,3 +29,12 @@ export interface Recipe {
   nodes: Node[]
   edges: Edge[]
 }
+
+export interface Offer {
+  ingredient: string
+  cost: number
+  unlocks: number
+  spice: boolean
+}
+
+export type Offers = Offer[][]

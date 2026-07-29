@@ -308,12 +308,8 @@ function newRecipe() {
 const unlockedExamples = computed(() =>
   exampleRecipes.filter((r) => global.level >= r.unlocks),
 )
-const unlockedIngredients = computed(() =>
-  ingredients.filter((i) => global.level >= i.unlocks),
-)
-const unlockedSpices = computed(() =>
-  spices.filter((r) => global.level >= r.unlocks),
-)
+const unlockedIngredients = computed(() => global.getUnlockedIngredients())
+const unlockedSpices = computed(() => global.getUnlockedSpices())
 </script>
 
 <template>
