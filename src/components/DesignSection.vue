@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 import type { Recipe } from '../types.ts'
 import ChartArea from './ChartArea.vue'
-import { ingredients, spices } from '../data.ts'
+import { ingredients } from '../data.ts'
 import knifeIcon from '../assets/icons/knife.svg'
 import blendIcon from '../assets/icons/mixer.svg'
 import trashIcon from '../assets/icons/trash.svg'
