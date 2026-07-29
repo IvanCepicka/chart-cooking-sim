@@ -305,9 +305,7 @@ function newRecipe() {
   localStorage.removeItem(LAST_RECIPE_KEY)
 }
 
-const unlockedExamples = computed(() =>
-  exampleRecipes.filter((r) => global.level >= r.unlocks),
-)
+const unlockedExamples = computed(() => global.getUnlockedExamples())
 const unlockedIngredients = computed(() => global.getUnlockedIngredients())
 const unlockedSpices = computed(() => global.getUnlockedSpices())
 </script>

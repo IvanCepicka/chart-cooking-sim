@@ -1,7 +1,24 @@
 import type { Recipe } from './types'
 
+export interface LevelUnlockRequirement {
+  type: 'level'
+  level: number
+}
+
+export interface OfferUnlockRequirement {
+  type: 'offer'
+  path: number
+  tier: number
+}
+
+export type UnlockRequirementObject =
+  OfferUnlockRequirement | LevelUnlockRequirement
+
+export type UnlockRequirement =
+  UnlockRequirementObject[] | UnlockRequirementObject | number
+
 export type ExampleRecipe = Recipe & {
-  unlocks: number
+  unlocks: UnlockRequirement
 }
 
 export const exampleRecipes: ExampleRecipe[] = [
@@ -949,6 +966,371 @@ export const exampleRecipes: ExampleRecipe[] = [
       },
     ],
     unlocks: 6,
+  },
+  {
+    id: '85738a5c-14f4-4089-8fa2-a2c5f0b92a4b',
+    name: 'Garlic Trout',
+    nodes: [
+      {
+        id: '02c7ed0d-b81a-490d-8e2d-b9045cce0475',
+        type: 'serve',
+        position: { x: 358.12619864539755, y: 80.53788868085864 },
+        data: {},
+      },
+      {
+        id: 'af83ecd1-169e-4507-8ae6-dac968d5dc3a',
+        type: 'raw',
+        position: { x: 160.86213347689477, y: -829.3358743440895 },
+        data: { id: 'trout', count: 1 },
+      },
+      {
+        id: '78d155a8-8303-442c-ae4a-204d733a1ad9',
+        type: 'bake',
+        position: { x: 119.58965211805042, y: -232.46698524189645 },
+        data: { duration: 100, temperature: 160 },
+      },
+      {
+        id: '41abb5dc-79e6-4ebc-b459-a3659f346cb8',
+        type: 'spice',
+        position: { x: 245.43661992725475, y: -578.3799164670606 },
+        data: { id: 'garlicpowder', amount: 3 },
+      },
+      {
+        id: '5df8fe15-232b-425b-a424-5bd1e8374c21',
+        type: 'spice',
+        position: { x: -162.6343299018916, y: -479.7642499440861 },
+        data: { id: 'blackpepper', amount: 2 },
+      },
+      {
+        id: '437513e1-97bc-4d73-823b-51f0229ed4c0',
+        type: 'raw',
+        position: { x: 682.9036735157133, y: -747.4218594652535 },
+        data: { id: 'lemon', count: 1 },
+      },
+      {
+        id: 'f0db9b1d-a89f-4213-9712-268b05ce2e50',
+        type: 'cut',
+        position: { x: 626.5474612515575, y: -512.3610171926448 },
+        data: { pieces: 4 },
+      },
+      {
+        id: 'c53c43b3-8773-4e90-af83-5c62b243d20e',
+        type: 'trash',
+        position: { x: 494.78298621981185, y: -283.97848219189643 },
+        data: { amount: 75 },
+      },
+      {
+        id: '111b3de6-d750-4906-8713-0565eb7f01b3',
+        type: 'raw',
+        position: { x: 1082.2819893148478, y: -659.5195423626593 },
+        data: { id: 'garlic', count: 1 },
+      },
+      {
+        id: 'd4a1ce1b-ae43-4149-89c5-baf7311e1ad3',
+        type: 'cut',
+        position: { x: 1035.4401674468584, y: -396.5326189365798 },
+        data: { pieces: 20 },
+      },
+      {
+        id: '2077d83c-09ad-475a-9d4d-ac1169644d2d',
+        type: 'trash',
+        position: { x: 923.827945916496, y: -156.45385337870255 },
+        data: { amount: 50 },
+      },
+    ],
+    edges: [
+      {
+        id: '42d8d099-97e8-44fd-abfb-ef2879be48ce',
+        source: 'af83ecd1-169e-4507-8ae6-dac968d5dc3a',
+        target: '41abb5dc-79e6-4ebc-b459-a3659f346cb8',
+      },
+      {
+        id: 'aa56a80d-e391-495e-9c08-dffc638b986c',
+        source: '41abb5dc-79e6-4ebc-b459-a3659f346cb8',
+        target: '5df8fe15-232b-425b-a424-5bd1e8374c21',
+      },
+      {
+        id: '667e3bd3-4b1b-41ef-99f1-41d38e5947b1',
+        source: '5df8fe15-232b-425b-a424-5bd1e8374c21',
+        target: '78d155a8-8303-442c-ae4a-204d733a1ad9',
+      },
+      {
+        id: '1bc0625a-2a58-42d1-a009-cac623293662',
+        source: '78d155a8-8303-442c-ae4a-204d733a1ad9',
+        target: '02c7ed0d-b81a-490d-8e2d-b9045cce0475',
+      },
+      {
+        id: '0b727862-f5cc-4b5a-bd12-d6f57c14cfee',
+        source: '437513e1-97bc-4d73-823b-51f0229ed4c0',
+        target: 'f0db9b1d-a89f-4213-9712-268b05ce2e50',
+      },
+      {
+        id: 'c941e755-dafb-41d9-ae46-9b46971025ad',
+        source: 'f0db9b1d-a89f-4213-9712-268b05ce2e50',
+        target: 'c53c43b3-8773-4e90-af83-5c62b243d20e',
+      },
+      {
+        id: 'ac460975-5463-46ac-a125-d116f77ec713',
+        source: 'c53c43b3-8773-4e90-af83-5c62b243d20e',
+        target: '02c7ed0d-b81a-490d-8e2d-b9045cce0475',
+      },
+      {
+        id: '05e09474-7434-4362-9af0-3f68de87062a',
+        source: '2077d83c-09ad-475a-9d4d-ac1169644d2d',
+        target: '02c7ed0d-b81a-490d-8e2d-b9045cce0475',
+      },
+      {
+        id: '3699f1fa-0c0c-4159-98a3-3edc551f74c1',
+        source: 'd4a1ce1b-ae43-4149-89c5-baf7311e1ad3',
+        target: '2077d83c-09ad-475a-9d4d-ac1169644d2d',
+      },
+      {
+        id: '2e739873-36a0-401e-a32b-96dd904ec526',
+        source: '111b3de6-d750-4906-8713-0565eb7f01b3',
+        target: 'd4a1ce1b-ae43-4149-89c5-baf7311e1ad3',
+      },
+    ],
+    unlocks: {
+      type: 'offer',
+      path: 0,
+      tier: 3,
+    },
+  },
+  {
+    id: '5b807914-cf14-4edd-8b85-f29cd941575f',
+    name: 'Lava Chicken',
+    nodes: [
+      {
+        id: 'fb3c4e80-d7a3-45f3-bb8e-f2fdfdc413ca',
+        type: 'serve',
+        position: { x: 1.6928628921688045, y: 297.9588748584638 },
+        data: {},
+      },
+      {
+        id: '8e9cd397-248e-4b21-9dce-5cdce5084ee4',
+        type: 'raw',
+        position: { x: 105.42854557921663, y: -772.6483853370553 },
+        data: { id: 'chicken', count: 1 },
+      },
+      {
+        id: '2c85c42c-081d-4f17-bde5-7027597f76aa',
+        type: 'grill',
+        position: { x: 53.88711836389692, y: -499.6497433944173 },
+        data: { duration: 120 },
+      },
+      {
+        id: '7043e89c-cde4-44d6-8561-0eb360a775c2',
+        type: 'spice',
+        position: { x: 100.04753960719762, y: -259.1353648164438 },
+        data: { id: 'chilipowder', amount: 4 },
+      },
+      {
+        id: '4410f1e3-cf72-4b6d-9e65-3723a61931a4',
+        type: 'spice',
+        position: { x: -120.49003753583753, y: 3.6791102817171577 },
+        data: { id: 'blackpepper', amount: 4 },
+      },
+      {
+        id: 'c0491a38-c2b4-425b-bb43-3cdecb3f76f4',
+        type: 'raw',
+        position: { x: 582.7354985753307, y: -432.642793496603 },
+        data: { id: 'tomato', count: 2 },
+      },
+      {
+        id: '55db8bef-fa16-442b-9408-0d6a5bad3855',
+        type: 'raw',
+        position: { x: 1026.5122684319808, y: -370.5563410301179 },
+        data: { id: 'chilipepper', count: 2 },
+      },
+      {
+        id: '3ffa83cd-b01c-4a29-8186-2cf7b55fe57e',
+        type: 'blend',
+        position: { x: 806.7682730125587, y: -79.88353029145225 },
+        data: {},
+      },
+      {
+        id: '3bd691db-9f84-410f-8e79-bd66c0cb5908',
+        type: 'spice',
+        position: { x: 294.056286885596, y: 50.355262356343275 },
+        data: { id: 'blackpepper', amount: 4 },
+      },
+    ],
+    edges: [
+      {
+        id: '48e907dd-ab07-430f-a7a8-897a7f304eab',
+        source: '2c85c42c-081d-4f17-bde5-7027597f76aa',
+        target: '7043e89c-cde4-44d6-8561-0eb360a775c2',
+      },
+      {
+        id: '298eefe0-2889-479f-aa1e-2f2a9ddb791f',
+        source: '8e9cd397-248e-4b21-9dce-5cdce5084ee4',
+        target: '2c85c42c-081d-4f17-bde5-7027597f76aa',
+      },
+      {
+        id: '05a155cd-56d0-4ac3-9a86-e1e006e6923d',
+        source: '7043e89c-cde4-44d6-8561-0eb360a775c2',
+        target: '4410f1e3-cf72-4b6d-9e65-3723a61931a4',
+      },
+      {
+        id: '44fb8b3f-812f-47e4-93d1-8eedc77eb678',
+        source: '4410f1e3-cf72-4b6d-9e65-3723a61931a4',
+        target: 'fb3c4e80-d7a3-45f3-bb8e-f2fdfdc413ca',
+      },
+      {
+        id: 'eee3c623-7de2-4adf-84de-139387911f5b',
+        source: '55db8bef-fa16-442b-9408-0d6a5bad3855',
+        target: '3ffa83cd-b01c-4a29-8186-2cf7b55fe57e',
+      },
+      {
+        id: '0948566c-a9ea-4c9d-a1c7-58b5ee07b090',
+        source: 'c0491a38-c2b4-425b-bb43-3cdecb3f76f4',
+        target: '3ffa83cd-b01c-4a29-8186-2cf7b55fe57e',
+      },
+      {
+        id: 'a7da812f-b3cd-4528-aca6-cb43632ef6b1',
+        source: '3ffa83cd-b01c-4a29-8186-2cf7b55fe57e',
+        target: '3bd691db-9f84-410f-8e79-bd66c0cb5908',
+      },
+      {
+        id: '3ce685c8-af9f-405b-a1c0-82d808a7dfed',
+        source: '3bd691db-9f84-410f-8e79-bd66c0cb5908',
+        target: 'fb3c4e80-d7a3-45f3-bb8e-f2fdfdc413ca',
+      },
+    ],
+    unlocks: {
+      type: 'offer',
+      path: 1,
+      tier: 3,
+    },
+  },
+  {
+    id: 'cab0ed16-4e88-4a77-83c8-7ba96f496c2e',
+    name: 'Garden Salad',
+    nodes: [
+      {
+        id: 'ea6e18e1-b530-4b6e-8843-fc9e7f5ef01c',
+        type: 'serve',
+        position: { x: 67.23436103662215, y: 160.30768724335394 },
+        data: {},
+      },
+      {
+        id: '2ff2b199-33a3-4ea0-a298-0194073e91b6',
+        type: 'raw',
+        position: { x: -258.6012391712618, y: -637.4842166771905 },
+        data: { id: 'tomato', count: 1 },
+      },
+      {
+        id: '32c28e14-4e50-4a54-beec-27dabcb3f66a',
+        type: 'raw',
+        position: { x: 210.2235165120037, y: -688.3157355358687 },
+        data: { id: 'lettuce', count: 1 },
+      },
+      {
+        id: '58a2480a-216d-479f-9ade-6c612e5b8e99',
+        type: 'spice',
+        position: { x: -155.66956531553802, y: -86.51510624791314 },
+        data: { id: 'blackpepper', amount: 2 },
+      },
+      {
+        id: '4452b90a-1892-4d09-b3ed-58ca0b1e80a7',
+        type: 'cut',
+        position: { x: -371.99348139931726, y: -381.48952668084166 },
+        data: { pieces: 10 },
+      },
+      {
+        id: '402627a1-f6e3-4fb1-a50d-a466b4866059',
+        type: 'cut',
+        position: { x: 130.91619849207814, y: -437.2788315579144 },
+        data: { pieces: 20 },
+      },
+      {
+        id: '098c895e-5cc0-4913-88ce-02a758d80beb',
+        type: 'raw',
+        position: { x: 638.755900817163, y: -593.196927054665 },
+        data: { id: 'carrot', count: 1 },
+      },
+      {
+        id: '1399c49b-405f-4546-82b0-91dee770e0a1',
+        type: 'cut',
+        position: { x: 572.6044699240294, y: -367.12431217009873 },
+        data: { pieces: 10 },
+      },
+      {
+        id: '04cb48e6-901b-471d-bbb8-e1258b4f1981',
+        type: 'raw',
+        position: { x: 1011.6520788121788, y: -333.43139429634675 },
+        data: { id: 'bellpepper', count: 1 },
+      },
+      {
+        id: '112343d1-5ac1-444f-a472-23b986635879',
+        type: 'cut',
+        position: { x: 768.3855322606781, y: -86.41888507664447 },
+        data: { pieces: 15 },
+      },
+    ],
+    edges: [
+      {
+        id: 'a5f6cc0c-80e9-4e29-be4f-a158781a0326',
+        source: '58a2480a-216d-479f-9ade-6c612e5b8e99',
+        target: 'ea6e18e1-b530-4b6e-8843-fc9e7f5ef01c',
+      },
+      {
+        id: 'dd32abac-84e7-4b55-a72d-734938abb734',
+        source: '2ff2b199-33a3-4ea0-a298-0194073e91b6',
+        target: '4452b90a-1892-4d09-b3ed-58ca0b1e80a7',
+      },
+      {
+        id: '94fa6f7a-a4fc-46e6-9664-b46997084c92',
+        source: '4452b90a-1892-4d09-b3ed-58ca0b1e80a7',
+        target: '58a2480a-216d-479f-9ade-6c612e5b8e99',
+      },
+      {
+        id: '8780a11d-2934-41df-b265-4c2d6de0fab4',
+        source: '32c28e14-4e50-4a54-beec-27dabcb3f66a',
+        target: '402627a1-f6e3-4fb1-a50d-a466b4866059',
+      },
+      {
+        id: '4d0cb6b8-198d-4502-b665-fea757b518aa',
+        source: '402627a1-f6e3-4fb1-a50d-a466b4866059',
+        target: '58a2480a-216d-479f-9ade-6c612e5b8e99',
+      },
+      {
+        id: '3785ffe4-e5ae-4b14-85f1-1f977d25d0dd',
+        source: '098c895e-5cc0-4913-88ce-02a758d80beb',
+        target: '1399c49b-405f-4546-82b0-91dee770e0a1',
+      },
+      {
+        id: 'f455977d-01f5-445c-a407-e928065c6457',
+        source: '1399c49b-405f-4546-82b0-91dee770e0a1',
+        target: '58a2480a-216d-479f-9ade-6c612e5b8e99',
+      },
+      {
+        id: '248d37ff-0962-4223-9806-bc4aa8fc67b7',
+        source: '04cb48e6-901b-471d-bbb8-e1258b4f1981',
+        target: '112343d1-5ac1-444f-a472-23b986635879',
+      },
+      {
+        id: 'fc3d1d06-4948-4aa5-a57a-6dbb7600c0b2',
+        source: '112343d1-5ac1-444f-a472-23b986635879',
+        target: '58a2480a-216d-479f-9ade-6c612e5b8e99',
+      },
+    ],
+    unlocks: [
+      {
+        type: 'offer',
+        path: 0,
+        tier: 1,
+      },
+      {
+        type: 'offer',
+        path: 1,
+        tier: 1,
+      },
+      {
+        type: 'level',
+        level: 6,
+      },
+    ],
   },
 ]
 
