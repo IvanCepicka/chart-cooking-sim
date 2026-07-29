@@ -15,6 +15,12 @@ import chickenIcon from './assets/icons/chicken.svg'
 import chickenBrothIcon from './assets/icons/chickenbroth.svg'
 import tomatoIcon from './assets/icons/tomato.svg'
 import lettuceIcon from './assets/icons/lettuce.svg'
+import carrotIcon from './assets/icons/carrot.svg'
+import garlicIcon from './assets/icons/garlic.svg'
+import garlicPowderIcon from './assets/icons/garlicpowder.svg'
+import bellPepperIcon from './assets/icons/bellpepper.svg'
+import chiliPepperIcon from './assets/icons/chilipepper.svg'
+import chiliPowderIcon from './assets/icons/chilipowder.svg'
 
 export const ingredients: Ingredient[] = [
   {
@@ -113,6 +119,38 @@ export const ingredients: Ingredient[] = [
     icon: lettuceIcon,
     unlocks: 6,
   },
+  {
+    type: 'solid',
+    id: 'carrot',
+    name: 'Carrot',
+    cost: 1,
+    icon: carrotIcon,
+    unlocks: 'store',
+  },
+  {
+    type: 'solid',
+    id: 'bellpepper',
+    name: 'Bell Pepper',
+    cost: 1.2,
+    icon: bellPepperIcon,
+    unlocks: 'store',
+  },
+  {
+    type: 'solid',
+    id: 'chilipepper',
+    name: 'Chili Pepper',
+    cost: 1.3,
+    icon: chiliPepperIcon,
+    unlocks: 'store',
+  },
+  {
+    type: 'solid',
+    id: 'garlic',
+    name: 'Garlic',
+    cost: 1.2,
+    icon: garlicIcon,
+    unlocks: 'store',
+  },
 ]
 
 export const spices: Spice[] = [
@@ -136,6 +174,20 @@ export const spices: Spice[] = [
     cost: 0.1,
     icon: blackPepperIcon,
     unlocks: 3,
+  },
+  {
+    id: 'garlicpowder',
+    name: 'Garlic Powder',
+    cost: 0.2,
+    icon: garlicPowderIcon,
+    unlocks: 'store',
+  },
+  {
+    id: 'chilipowder',
+    name: 'Chili Powder',
+    cost: 0.2,
+    icon: chiliPowderIcon,
+    unlocks: 'store',
   },
 ]
 

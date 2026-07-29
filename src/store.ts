@@ -2,6 +2,8 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 import { db } from './db'
 import { calculateRecipe } from './recipecalc'
 import { exampleRecipes } from './examples'
+import { offers } from './offers'
+import { ingredients, spices } from './data'
 
 interface Order {
   request: string
@@ -19,6 +21,7 @@ export interface GlobalState {
   orders: Order[]
   autoAccept: boolean
   lastTick: number
+  offerTiers: number[]
 }
 
 const defaultState: GlobalState = {
@@ -29,6 +32,7 @@ const defaultState: GlobalState = {
   orders: [],
   autoAccept: false,
   lastTick: performance.now(),
+  offerTiers: [],
 }
 
 export const maxLevel = 6
@@ -65,6 +69,9 @@ export const useGlobal = defineStore('global', {
   actions: {
     async init() {
       this.lastTick = performance.now()
+      for (let i = 0; i < offers.length; i++) {
+        this.offerTiers.push(0)
+      }
       this.orders = [
         await this.generateRecipe(),
         await this.generateRecipe(),
@@ -92,6 +99,14 @@ export const useGlobal = defineStore('global', {
 
       const aa = localStorage.getItem('autoaccept')
       if (aa) this.autoAccept = aa === 'a'
+
+      const offerTiers = localStorage.getItem('offerTiers')
+      if (offerTiers) {
+        const spl = offerTiers.split(';')
+        for (let i = 0; i < spl.length; i++) {
+          this.offerTiers[i] = parseInt(spl[i])
+        }
+      }
     },
 
     save() {
@@ -102,6 +117,7 @@ export const useGlobal = defineStore('global', {
       localStorage.setItem(MENU_KEY, this.menu.join(';'))
       localStorage.setItem('orders', JSON.stringify(this.orders))
       localStorage.setItem('autoaccept', this.autoAccept ? 'a' : 'm')
+      localStorage.setItem('offerTiers', this.offerTiers.join(';'))
     },
 
     async tick() {
@@ -185,6 +201,43 @@ export const useGlobal = defineStore('global', {
         return exampleRecipes.find((r) => r.id === id.slice(8))
       }
       return await db.recipes.get(id.slice(6))
+    },
+
+    purchaseStoreIngredient(i: number) {
+      const offer = offers[i]?.[this.offerTiers[i]]
+      if (!offer || this.money < offer.cost) return
+      this.offerTiers[i]++
+      this.money -= offer.cost
+    },
+
+    getUnlockedIngredients() {
+      return ingredients.filter((i) => {
+        if (i.unlocks === 'store') {
+          const offersIdx = offers.findIndex(
+            (o) => o.findIndex((v) => v.ingredient === i.id && !v.spice) >= 0,
+          )
+          const offerIdx = offers[offersIdx].findIndex(
+            (o) => o.ingredient === i.id && !o.spice,
+          )
+          return this.offerTiers[offersIdx] > offerIdx
+        }
+        return this.level >= i.unlocks
+      })
+    },
+
+    getUnlockedSpices() {
+      return spices.filter((r) => {
+        if (r.unlocks === 'store') {
+          const offersIdx = offers.findIndex(
+            (o) => o.findIndex((v) => v.ingredient === r.id && v.spice) >= 0,
+          )
+          const offerIdx = offers[offersIdx].findIndex(
+            (o) => o.ingredient === r.id && o.spice,
+          )
+          return this.offerTiers[offersIdx] > offerIdx
+        }
+        return this.level >= r.unlocks
+      })
     },
   },
 })
