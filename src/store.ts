@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { db } from './db'
 import { calculateRecipe } from './recipecalc'
-import { exampleRecipes } from './examples'
+import { exampleRecipes, type UnlockRequirement } from './examples'
 import { offers } from './offers'
 import { ingredients, spices } from './data'
 
@@ -238,6 +238,22 @@ export const useGlobal = defineStore('global', {
         }
         return this.level >= r.unlocks
       })
+    },
+
+    getUnlockedExamples() {
+      return exampleRecipes.filter((e) => this.evaluateRequirement(e.unlocks))
+    },
+
+    evaluateRequirement(req: UnlockRequirement): boolean {
+      if (typeof req === 'number') {
+        return this.level >= req
+      } else if (Array.isArray(req)) {
+        return req.every((r) => this.evaluateRequirement(r))
+      } else if (req.type === 'offer') {
+        return this.offerTiers[req.path] >= req.tier
+      } else {
+        return this.level >= req.level
+      }
     },
   },
 })
