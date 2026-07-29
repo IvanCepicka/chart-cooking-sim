@@ -40,7 +40,7 @@ const unlockedOffers = computed(
 <template>
   <div class="section">
     <div class="stats">
-      <p>Balance {{ global.money }}c</p>
+      <p>Balance {{ global.money.toFixed(2) }}c</p>
     </div>
     <div class="offers">
       <div v-for="(offer, i) in unlockedOffers" class="offer">
