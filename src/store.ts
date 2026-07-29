@@ -18,6 +18,7 @@ export interface GlobalState {
   menu: string[]
   orders: Order[]
   autoAccept: boolean
+  lastTick: number
 }
 
 const defaultState: GlobalState = {
@@ -27,6 +28,7 @@ const defaultState: GlobalState = {
   menu: ['example:0360961a-8a33-4a23-a7e9-f755e8a8f67f'],
   orders: [],
   autoAccept: false,
+  lastTick: performance.now(),
 }
 
 export const maxLevel = 6
@@ -62,6 +64,7 @@ export const useGlobal = defineStore('global', {
 
   actions: {
     async init() {
+      this.lastTick = performance.now()
       this.orders = [
         await this.generateRecipe(),
         await this.generateRecipe(),
@@ -102,6 +105,17 @@ export const useGlobal = defineStore('global', {
     },
 
     async tick() {
+      // preserve xp when paused by browser
+      const now = performance.now()
+      if (now - this.lastTick >= 2000) {
+        const xpToAdd = Math.floor((now - this.lastTick) / 1000) * 3
+        for (let i = 0; i < xpToAdd; i++) {
+          this.xpRemaining--
+          this.checkXp()
+        }
+      }
+      this.lastTick = now
+
       this.updateNextLevel()
       for (let i = 0; i < 3; i++) {
         const order = this.orders[i]
@@ -111,9 +125,7 @@ export const useGlobal = defineStore('global', {
 
           for (let i = 0; i < order.duration; i++) {
             this.xpRemaining--
-            if (this.checkXp()) {
-              break
-            }
+            this.checkXp()
           }
 
           this.orders[i] = await this.generateRecipe()
