@@ -107,7 +107,7 @@ export const useGlobal = defineStore('global', {
     async tick() {
       // preserve xp when paused by browser
       const now = performance.now()
-      if (now - this.lastTick >= 2000) {
+      if (now - this.lastTick >= 2000 && this.autoAccept) {
         const xpToAdd = Math.floor((now - this.lastTick) / 1000) * 3
         for (let i = 0; i < xpToAdd; i++) {
           this.xpRemaining--
